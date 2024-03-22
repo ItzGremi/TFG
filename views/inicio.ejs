@@ -7,5 +7,12 @@
 </head>
 <body>
     <a href="/fichar">Fichar</a>
+    <% if(login) { %>
+        <h1>El usuario conectado es: <strong><%= usuario %></strong></h1>
+        <a href="cerrarsesion">Cerrar sesión</a>
+    <% } else { %>
+        <h1><strong><%= usuario %></strong></h1>
+        <a href="iniciosesion">Iniciar sesión</a>
+    <% } %>
 </body>
 </html>

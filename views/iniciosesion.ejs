@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JoClock - Inicio Sesion</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/css/iniciosesion.css">
+</head>
+<body>
+    
+    <div class="wrapper">
+        <form action="auth" method="POST">
+            <h1>Iniciar sesión</h1>
+            <div class="input-box">
+                <i class='bx bxs-user'></i>
+                <input type="text" name="user" placeholder="Usuario">
+            </div>
+            <div class="input-box">
+                <i class='bx bxs-lock-alt' style='color:#fffdfd' ></i>
+                <input type="password" name="pass" placeholder="Contraseña">
+            </div>
+
+            <button type="submit" class="btn">Iniciar sesión</button>
+
+            <div class="register-link">
+                <p>¿No tienes una cuenta? <a href="registro">Registrarse</a> </p>
+            </div>
+        </form>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <% if(typeof alert != "undefined") { %>
+        <script>
+            Swal.fire({
+                title: '<%= alertTitle%>',
+                text: '<%= alertMessage%>',
+                icon: '<%= alertIcon%>',
+                showConfirmButton: <%= showConfirmButton%>,
+                timer: <%= timer%>
+            }).then(()=>{
+                window.location='/<%= ruta%>'
+            })
+        </script>
+        <% } %>
+
+</body>
+</html>

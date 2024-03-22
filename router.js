@@ -3,8 +3,25 @@ const router = express.Router();
 const conexion = require('./database/db');
 
 router.get('/', (req, res)=>{
-    res.render('inicio');
+    if(req.session.loggedin){
+        res.render('inicio', {
+            login:true,
+            usuario: req.session.usuario
+        });
+    } else{
+        res.render('inicio', {
+            login:false,
+            usuario: 'Debe iniciar sesión'
+        });
+    }
 });
+
+
+router.get('/cerrarsesion', (req, res)=>{
+    req.session.destroy(()=>{
+        res.redirect('/');
+    })
+})
 
 router.get('/fichar', (req, res)=>{
     res.render('fichar');
@@ -15,14 +32,25 @@ router.get('/noticias', (req, res)=>{
         if(error){
             throw error;
         } else{
-            res.render('noticias', {resultados:results});
+            res.render('noticias', {
+                resultados: results,
+                usuario: req.session.usuario // Asegúrate de pasar el nombre de usuario desde la sesión
+            });
         }
     })
 })
 
+
 router.get('/noticias_crear', (req, res)=>{
-    res.render('noticias_crear');
+    if(req.session.loggedin){
+        res.render('noticias_crear', {
+            usuario: req.session.usuario
+        });
+    } else {
+        res.redirect('/iniciosesion');
+    }
 })
+
 
 router.get('/noticia_editar/:id', (req, res)=>{
     const id = req.params.id;
@@ -37,18 +65,43 @@ router.get('/noticia_editar/:id', (req, res)=>{
 
 router.get('/noticia_eliminar/:id', (req, res)=>{
     const id = req.params.id;
-    conexion.query('DELETE from noticias WHERE id=?', [id], (error, results)=>{
-        if(error){
+    const usuario = req.session.usuario; // Obtener el nombre de usuario de la sesión actual
+
+    // Verificar si el usuario actual es el creador original de la noticia
+    conexion.query('SELECT usuario FROM noticias WHERE id=?', [id], (error, results) => {
+        if (error) {
             throw error;
         } else {
-            res.redirect('/noticias');
+            const creadorOriginal = results[0].usuario;
+            if (creadorOriginal === usuario) { // Permitir la eliminación solo si el usuario actual es el creador original
+                conexion.query('DELETE FROM noticias WHERE id=?', [id], (error, results)=>{
+                    if(error){
+                        throw error;
+                    } else {
+                        res.redirect('/noticias');
+                    }
+                });
+            } else {
+                res.redirect('/noticias');
+            }
         }
-    })
+    });
 })
 
+
+
+router.get('/iniciosesion', (req, res)=>{
+    res.render('iniciosesion');
+})
+
+router.get('/registro', (req, res)=>{
+    res.render('registro');
+})
 
 const crud = require('./controllers/crud');
 router.post('/guardar_noticia', crud.guardar_noticia);
 router.post('/editar_noticia', crud.editar_noticia);
+router.post('/register', crud.registro);
+router.post('/auth', crud.iniciosesion);
 
 module.exports = router;

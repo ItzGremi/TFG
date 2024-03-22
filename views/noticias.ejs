@@ -33,9 +33,12 @@
                     <p><%= noticia.fecha_publicacion %></p>
                 </div>
                 <div class="modificar-noticia">
-                    <a href="/noticia_editar/<%= noticia.id %>" class="btn btn-outline-info"><i class="bi bi-pencil-square"></i></a>
-                    <a href="/noticia_eliminar/<%= noticia.id %>" class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></a>
+                    <% if (noticia.usuario === usuario) { %>
+                        <a href="/noticia_editar/<%= noticia.id %>" class="btn btn-outline-info"><i class="bi bi-pencil-square"></i></a>
+                        <a href="/noticia_eliminar/<%= noticia.id %>" class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></a>
+                    <% } %>
                 </div>
+                
             </div>
         <% }); %>
     </div>
