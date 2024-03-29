@@ -23,9 +23,25 @@ router.get('/cerrarsesion', (req, res)=>{
     })
 })
 
-router.get('/fichar', (req, res)=>{
-    res.render('fichar');
+router.get('/fichar', (req, res) => {
+    const usuario = req.session.usuario;
+    if (req.session.loggedin) {
+        conexion.query('SELECT hora_entrada, hora_salida FROM fichaje WHERE usuario = ? ORDER BY hora_entrada DESC LIMIT 10', [usuario], (error, results) => {
+            if (error) {
+                throw error;
+            } else {
+                res.render('fichar', {
+                    login: req.session.loggedin,
+                    usuario: req.session.usuario,
+                    fichajes: results
+                });
+            }
+        });
+    } else {
+        res.redirect('/iniciosesion');
+    }
 });
+
 
 router.get('/noticias', (req, res)=>{
     conexion.query('SELECT * FROM noticias', (error, results)=>{
@@ -34,17 +50,20 @@ router.get('/noticias', (req, res)=>{
         } else{
             res.render('noticias', {
                 resultados: results,
-                usuario: req.session.usuario // Asegúrate de pasar el nombre de usuario desde la sesión
+                login: req.session.loggedin, // Pasar la variable login basada en si el usuario está autenticado o no
+                usuario: req.session.usuario // Pasar el nombre de usuario desde la sesión
             });
         }
     })
 })
 
 
+
 router.get('/noticias_crear', (req, res)=>{
     if(req.session.loggedin){
         res.render('noticias_crear', {
-            usuario: req.session.usuario
+            usuario: req.session.usuario,
+            login: req.session.loggedin
         });
     } else {
         res.redirect('/iniciosesion');
@@ -58,7 +77,11 @@ router.get('/noticia_editar/:id', (req, res)=>{
         if(error){
             throw error;
         }else{
-            res.render('noticias_editar', {noticia:results[0]});
+            res.render('noticias_editar', {
+                noticia:results[0],
+                login: req.session.loggedin,
+                usuario: req.session.usuario
+            });
         }
     })
 })
@@ -103,5 +126,8 @@ router.post('/guardar_noticia', crud.guardar_noticia);
 router.post('/editar_noticia', crud.editar_noticia);
 router.post('/register', crud.registro);
 router.post('/auth', crud.iniciosesion);
+router.post('/iniciar_fichaje', crud.iniciar_fichaje);
+router.post('/terminar_fichaje', crud.terminar_fichaje);
+
 
 module.exports = router;

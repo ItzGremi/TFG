@@ -127,5 +127,39 @@ exports.iniciosesion = async (req, res) => {
     }
 }
 
+// Iniciar fichaje
+exports.iniciar_fichaje = (req, res) => {
+    if (!req.session.horaInicioFichaje) { // Verificar si el fichaje ya está iniciado
+        req.session.horaInicioFichaje = formatearFechaHora(new Date()); // Guardar la hora de inicio del fichaje en la sesión
+    }
+    res.redirect('/fichar'); // Redirigir a la página de fichaje
+}
+
+// Terminar fichaje
+exports.terminar_fichaje = (req, res) => {
+    if (req.session.horaInicioFichaje) { // Verificar si el fichaje está iniciado
+        const usuario = req.session.usuario; // Obtener el nombre de usuario de la sesión actual
+        const horaInicioFichaje = req.session.horaInicioFichaje; // Obtener la hora de inicio del fichaje de la sesión
+        const horaFinFichaje = formatearFechaHora(new Date()); // Obtener la hora actual como hora de finalización del fichaje
+        
+        // Consulta SQL para insertar un nuevo registro de fichaje con la hora de inicio y fin
+        conexion.query('INSERT INTO fichaje (usuario, hora_entrada, hora_salida) VALUES (?, ?, ?)', [usuario, horaInicioFichaje, horaFinFichaje], (error, results) => {
+            if (error) {
+                console.error("Error al insertar fichaje:", error); // Agregar registro de error
+                res.status(500).send("Error interno del servidor"); // Enviar respuesta de error al cliente
+            } else {
+                delete req.session.horaInicioFichaje; // Eliminar la hora de inicio del fichaje de la sesión
+                res.redirect('/fichar'); // Redirigir a la página de fichaje
+            }
+        });
+    } else {
+        res.redirect('/fichar'); // Redirigir a la página de fichaje si el fichaje no está iniciado
+    }
+}
+
+
+
+
+
 
 
