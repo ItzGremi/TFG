@@ -1,5 +1,33 @@
 const conexion = require('../database/db');
 
+exports.guardar_tarea = (req, res) => {
+    const tarea = req.body.tarea;
+    const usuario = req.session.usuario; // Obtener el nombre de usuario de la sesión
+
+    conexion.query('INSERT INTO tareas SET ?', { tarea: tarea, usuario: usuario }, (error, results) => {
+        if (error) {
+            throw error;
+        } else {
+            res.redirect('/tareas');
+        }
+    });
+}
+
+
+exports.editar_tarea = (req, res) => {
+    const tarea = req.body.tarea;
+    const id = req.body.id;
+
+    conexion.query('UPDATE tareas SET tarea=? WHERE id=?', [tarea, id], (error, results) => {
+        if (error) {
+            throw error;
+        } else {
+            res.redirect('/tareas');
+        }
+    });
+}
+
+
 exports.guardar_noticia = (req, res) => {
     const noticia = req.body.noticia;
     const usuario = req.session.usuario; // Obtener el nombre de usuario de la sesión actual

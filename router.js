@@ -42,9 +42,65 @@ router.get('/fichar', (req, res) => {
     }
 });
 
+router.get('/tareas', (req, res) => {
+    const usuario = req.session.usuario;
+    if (req.session.loggedin) {
+        conexion.query('SELECT * FROM tareas WHERE usuario = ?', [usuario], (error, results)=>{
+            if (error) {
+                throw error;
+            } else {
+                res.render('tareas', {
+                    resultados: results,
+                    login: req.session.loggedin,
+                    usuario: req.session.usuario
+                });
+            }
+        });
+    } else {
+        res.redirect('/iniciosesion');
+    }
+});
+
+
+router.get('/tareas_crear', (req, res)=>{
+    if(req.session.loggedin){
+        res.render('tareas_crear', {
+            usuario: req.session.usuario,
+            login: req.session.loggedin
+        });
+    } else {
+        res.redirect('/iniciosesion');
+    }
+})
+
+router.get('/tarea_editar/:id', (req, res)=>{
+    const id = req.params.id;
+    conexion.query('SELECT * FROM tareas WHERE id=?', [id], (error, results)=>{
+        if(error){
+            throw error;
+        }else{
+            res.render('tareas_editar', {
+                tarea:results[0],
+                login: req.session.loggedin,
+                usuario: req.session.usuario
+            });
+        }
+    })
+})
+
+router.get('/tarea_eliminar/:id', (req, res)=>{
+    const id = req.params.id;
+    conexion.query('DELETE FROM tareas WHERE id=?', [id], (error, results)=>{
+        if(error){
+            throw error;
+        } else {
+            res.redirect('/tareas');
+        }
+    });  
+})
 
 router.get('/noticias', (req, res)=>{
-    conexion.query('SELECT * FROM noticias', (error, results)=>{
+    conexion.query('SELECT * FROM noticias ORDER BY fecha_publicacion DESC', (error, results)=>{
         if(error){
             throw error;
         } else{
@@ -128,6 +184,8 @@ router.post('/register', crud.registro);
 router.post('/auth', crud.iniciosesion);
 router.post('/iniciar_fichaje', crud.iniciar_fichaje);
 router.post('/terminar_fichaje', crud.terminar_fichaje);
+router.post('/guardar_tarea', crud.guardar_tarea);
+router.post('/editar_tarea', crud.editar_tarea);
 
 
 module.exports = router;

@@ -339,18 +339,52 @@ body.dark {
 
 /* FIN CARRUSEL --------------------------------------------------------------------*/
 
-/* NOTICIAS ------------------------------------------------------------------- */
+/* TAREAS ------------------------------------------------------------------- */
 
-.contenedor-noticias,
-.contenedor-tareas,
-.contenedor-fichar {
+.contenedor-tareas {
     margin-top: 0;
     padding-top: 20px; /* Espacio entre la cabecera y el contenido */
 }
 
-.contenedor-noticias,
-.contenedor-tareas,
-.contenedor-fichar {
+.contenedor-tareas{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.tarea {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 600px;
+    min-height: 300px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+    color: white !important; 
+    background-color: black !important; 
+}
+
+.texto-tarea {
+    margin-bottom: 10px;
+}
+
+.usuario-tarea {
+    margin-bottom: 10px;
+}
+
+/* FIN TAREAS ------------------------------------------------------------------- */
+
+/* NOTICIAS ------------------------------------------------------------------- */
+
+.contenedor-noticias{
+    margin-top: 0;
+    padding-top: 20px; /* Espacio entre la cabecera y el contenido */
+}
+
+.contenedor-noticias{
     display: flex;
     flex-direction: column;
     justify-content: center;
