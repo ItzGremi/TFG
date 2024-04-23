@@ -1,10 +1,11 @@
 const express = require('express');
 const app = express();
 const session = require('express-session');
+const nodemailer = require('nodemailer');
 
 // Configuración de express-session
 app.use(session({
-    secret: 'mi_secreto', // Cambia esto por una cadena de tu elección
+    secret: 'mi_secreto', 
     resave: false,
     saveUninitialized: true
 }));

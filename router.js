@@ -177,6 +177,19 @@ router.get('/registro', (req, res)=>{
     res.render('registro');
 })
 
+router.get('/recordar', (req, res)=>{
+    res.render('recordar');
+})
+
+router.get('/codigo', (req, res)=>{
+    res.render('codigo');
+})
+
+router.get('/cambiar-contra', (req, res)=>{
+    res.render('cambiar-contra');
+})
+
+
 const crud = require('./controllers/crud');
 router.post('/guardar_noticia', crud.guardar_noticia);
 router.post('/editar_noticia', crud.editar_noticia);
@@ -186,6 +199,9 @@ router.post('/iniciar_fichaje', crud.iniciar_fichaje);
 router.post('/terminar_fichaje', crud.terminar_fichaje);
 router.post('/guardar_tarea', crud.guardar_tarea);
 router.post('/editar_tarea', crud.editar_tarea);
+router.post('/enviar-correo', crud.enviarCorreo);
+router.post('/comprobar-codigo', crud.comprobarCodigoRecuperacion);
+router.post('/cambiar-contra', crud.cambiarContraseña);
 
 
 module.exports = router;
