@@ -30,6 +30,7 @@ body{
 .wrapper h1{
     font-size:36px;
     text-align:center;
+    font-weight:600;
 }
 
 .wrapper .input-box{
@@ -92,4 +93,12 @@ body{
 
 .register-link p a:hover{
     text-decoration:underline;
+}
+
+#ojo{
+    cursor: pointer;
+}
+
+#ojoDos{
+    cursor: pointer;
 }
