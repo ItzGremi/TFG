@@ -8,6 +8,8 @@
     --text-color: hsl(0, 0%, 6%);
     --bg-cabecera: hsl(0,0%,90%);
     --transition:color 0.1s, background-color 0.2s ease-in-out;
+    --tarjeta-fondo: hsl(0, 1%, 19%);
+    --tarjeta-texto: hsl(0,0%,90%);
 }
 
 * {
@@ -29,6 +31,8 @@ body.dark {
     --text-color: hsl(0,0%,90%);
     --bg-color: hsl(0, 1%, 19%);
     --bg-cabecera: hsl(0, 0%, 6%);
+    --tarjeta-fondo: hsl(0, 0%, 6%);
+
 }
 
 /* FIN MODO OSCURO ---------------------- */
@@ -338,6 +342,346 @@ body.dark {
 } 
 
 /* FIN CARRUSEL --------------------------------------------------------------------*/
+
+/* PÁGINA DE INICIO ------------------------------------------------------------- */
+
+/* MAIN */
+
+#inicio{
+    padding: 110px 0 220px;
+}
+
+#inicio .cont-foto{
+    position:relative;
+}
+
+#inicio .cont-foto img{
+    position:relative;
+    width:450px;
+    z-index:2;
+}
+
+#inicio .cont-foto::before{
+    background-color: var(--azul);
+    width:450px;
+    height:100%;
+    content:"";
+    position:absolute;
+    top:25px;
+    left:-25px;
+    z-index:1;
+}
+
+#inicio .cont-info{
+    padding-left:60px;
+}
+
+#inicio .cont-info .row{
+    margin-top:100px;
+}
+
+#inicio .cont-info p{
+    font-size:20px;
+}
+
+.icono-main{
+    font-size:30px;
+}
+
+.icono-main-estrella{
+    font-size:15px;
+    vertical-align: top;
+}
+
+.titulo-principal{
+    font-weight: bold;
+    font-size:2.8em;
+    padding-bottom:15px;
+}
+
+.titulo-principal span{
+    border-bottom: 4px solid var(--text-color);
+}
+
+.titulo-inicio{
+    text-align:center;
+    font-weight: bold;
+    font-size:3em;
+    padding-top:40px;
+}
+
+.texto-titulo{
+    text-align:center;
+    padding-top:15px;
+}
+
+@media screen and (max-width: 1200px) {
+    #inicio .cont-info {
+        padding-left: 90px;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    #inicio .cont-info {
+        margin-top: 50px;
+    }
+
+    #inicio .cont-foto{
+        margin-left:70px;
+    }
+}
+
+@media screen and (max-width: 652px) {
+    #inicio .cont-info {
+        padding-left: 40px;
+    }
+
+    #inicio .cont-foto img{
+        position:relative;
+        width:300px;
+        z-index:2;
+    }
+
+    #inicio .cont-foto::before{
+        width:300px;
+    }
+
+    .titulo-principal{
+        font-size:2em;
+    }
+
+    .titulo-inicio{
+        font-size:2em;
+    }
+}
+
+@media screen and (max-width: 388px) {
+    #inicio .cont-foto img{
+        position:relative;
+        width:200px;
+        z-index:2;
+    }
+
+    #inicio .cont-foto::before{
+        width:200px;
+    }
+
+    .titulo-principal{
+        font-size:1.5em;
+    }
+
+    .titulo-inicio{
+        font-size:1.5em;
+    }
+}
+
+/* FIN MAIN */
+/* SERVICIOS */
+
+#servicios{
+    width:100%;
+    position:relative;
+    padding:50px 0 185px;
+    text-align:center;
+}
+
+#servicios h2{
+    font-weight:bold;
+}
+
+#servicios p{
+    font-size:20px;
+}
+
+#servicios .row{
+    padding-top:50px;
+    margin: 0 70px 0 70px;
+}
+
+#servicios .tarjeta-servicios{
+    background-color: var(--tarjeta-fondo);
+    color:var(--modo-claro);
+    border-radius: 10px;
+    position:relative;
+    padding-top:50px;
+    padding-left: 30px;
+    padding-right:30px;
+    padding-bottom: 30px;
+    margin-top:50px;
+    transition: 0.4s;
+}
+
+#servicios .tarjeta-servicios:hover{
+    /* background-color: #3e04fd; */
+    background-color: var(--azul);
+}
+
+#servicios .tarjeta-servicios img{
+    width: 70px;
+    border-radius:4px;
+    position:absolute;
+    top:-30px;
+    left:30px;
+    background-color: var(--modo-oscuro-total);
+    border: 2px var(--azul) solid;
+    padding-top: 5px;
+
+}
+
+#servicios .tarjeta-servicios h3{
+    text-align: right;
+    font-size:40px;
+    margin-bottom:20px;
+    -webkit-text-stroke: 1px rgb(255, 255, 255); /* Grosor y color del borde */
+    -webkit-text-fill-color: transparent;
+}
+
+#servicios .tarjeta-servicios h4{
+    font-size:26px;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+#servicios .tarjeta-servicios p{
+    font-size:20px;
+    line-height: 30px;
+    margin-bottom:15px;
+}
+
+#servicios .tarjeta-servicios .tarjeta-inicial{
+    margin-left:50px;
+}
+
+#servicios .tarjeta-servicios .tarjeta-final{
+    margin-right:50px;
+}
+
+/* FIN SERVICIOS */
+
+#carouselExampleSlidesOnly{
+    display:none;
+}
+
+.hi-slide{
+    position:relative;
+    width:754px;
+    height:292px;
+    border-radius:50px;
+    margin:115px auto 0;
+    margin-bottom:50px;
+}
+
+.hi-slide .hi-next,
+.hi-slide .hi-prev{
+    position:absolute;
+    top:50%;
+    width:40px;
+    height:40px;
+    margin-top:-20px;
+    border-radius:50px;
+    line-height:40px;
+    text-align:center;
+    cursor:pointer;
+    background-color:var(--azul);
+    color:var(--text-color);
+    transition: all 0.7s;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.hi-slide .hi-next:hover,
+.hi-slide .hi-prev:hover{
+    opacity:1;
+    background-color: #12d7e9;
+}
+
+.hi-slide .hi-prev{
+    left:-60px;
+}
+
+.hi-slide .hi-prev::before{
+    content:'<';
+}
+
+.hi-slide .hi-next{
+    right:-60px;
+}
+
+.hi-slide .hi-next::before{
+    content:'>';
+}
+
+.hi-slide > ul{
+    list-style:none;
+    position:relative;
+    width:754px;
+    height:292px;
+    margin:0;
+    padding:0;
+}
+
+.hi-slide > ul > li{
+    overflow:hidden;
+    position:absolute;
+    z-index:0;
+    left:377px;
+    top:147px;
+    width:0;
+    height:0;
+    margin:0;
+    padding:0;
+    border: 3px solid var(--text-color);
+    cursor:pointer;
+    background-color: var(--bg-color);
+}
+
+.hi-slide > ul > li > img{
+    width:100%;
+    height:100%;
+    background-position: center;
+}
+
+.carousel-inner .carousel-item img {
+    border: 2px solid var(--text-color); 
+}
+
+/* Estilo personalizado para los botones de control */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 30px; /* Ancho de los botones */
+    height: 30px; /* Alto de los botones */
+    background-color: var(--azul); /* Fondo semitransparente */
+    border-radius: 50%; /* Borde redondeado */
+    border: 2px solid var(--text-color);
+    margin-top:60%;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    opacity:1;
+    background-color: #12d7e9;
+}
+
+.carousel-control-prev{
+    transform: translateX(-10px); /* Mover hacia la izquierda */
+    padding:5px;
+}
+
+.carousel-control-next{
+    transform: translateX(10px); /* Mover hacia la derecha */
+    padding:5px;
+}
+
+@media screen and (max-width:880px) {
+   .hi-slide{
+    display:none;
+   }
+   #carouselExampleSlidesOnly{
+    display:flex;
+}
+}
+
+/* FIN PÁGINA DE INICIO ------------------------------------------------------------- */
 
 /* TAREAS ------------------------------------------------------------------- */
 
