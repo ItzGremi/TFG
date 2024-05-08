@@ -681,6 +681,19 @@ body.dark {
 }
 }
 
+/* FOOTER */
+
+.footer{
+    background-color: var(--bg-cabecera);
+    min-height:150px;
+    width:100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: justify;
+}
+
+/* FIN FOOTER */
+
 /* FIN PÁGINA DE INICIO ------------------------------------------------------------- */
 
 /* TAREAS ------------------------------------------------------------------- */
