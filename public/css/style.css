@@ -408,11 +408,13 @@ body.dark {
     font-weight: bold;
     font-size:3em;
     padding-top:40px;
+    padding-bottom: 30px;
 }
 
 .texto-titulo{
     text-align:center;
     padding-top:15px;
+    font-size:20px;
 }
 
 @media screen and (max-width: 1200px) {
@@ -558,6 +560,104 @@ body.dark {
 
 /* FIN SERVICIOS */
 
+/* CLIENTES DESTACADOS */
+
+#clientes{
+    width:100%;
+    position:relative;
+    text-align: left;
+    padding: 50px 0;
+    margin-bottom: 150px;
+}
+
+#clientes .titulo-inicio{
+    text-align: left;
+    position:relative;
+    margin-bottom: 50px;
+}
+
+#clientes .titulo-inicio::after{
+    width:63%;
+    height:2px;
+    background: var(--text-color);
+    position:absolute;
+    content:"";
+    right: 0;
+    top:55%;
+}
+
+#clientes .tarjetas-destacadas{
+    position: relative;
+    margin-top:20px;
+}
+
+#clientes .tarjetas-destacadas img{
+    width:100%;
+    height:230px;
+    border: var(--modo-oscuro-total) 2px solid;
+    background-color: var(--modo-claro-total);
+}
+
+#clientes .puma img{
+    padding:20px;
+}
+
+#clientes .tarjetas-destacadas .info-destacadas{
+    background-color: var(--modo-oscuro-total);
+    padding: 14px;
+    color:var(--modo-claro-total);
+}
+
+#clientes .tarjetas-destacadas:hover .info-destacadas {
+    background-color: var(--azul);
+    transition: var(--transition);
+}
+
+#clientes .tarjetas-destacadas:hover img {
+    border-color:var(--azul);
+}
+
+#clientes .tarjetas-destacadas .info-destacadas:hover{
+    background-color: var(--azul);
+    transition: var(--transition);
+}
+
+#clientes .tarjetas-destacadas .info-destacadas h3{
+    font-weight: bold;
+}
+
+@media screen and (max-width:1399px){
+    #clientes .titulo-inicio::after{
+        width:57%;
+    }
+}
+
+@media screen and (max-width:1199px){
+    #clientes .titulo-inicio::after{
+        width:48%;
+    }
+}
+
+@media screen and (max-width:991px){
+    #clientes .titulo-inicio::after{
+        width:30%;
+    }
+}
+
+@media screen and (max-width:767px){
+    #clientes .titulo-inicio::after{
+        display:none;
+    }
+
+    #clientes .titulo-inicio{
+        text-align:center;
+    }
+}
+
+/* FIN CLIENTES DESTACADOS */
+
+/* NUESTRO EQUIPO */
+
 #carouselExampleSlidesOnly{
     display:none;
 }
@@ -641,35 +741,78 @@ body.dark {
     background-position: center;
 }
 
-.carousel-inner .carousel-item img {
-    border: 2px solid var(--text-color); 
+.cargo {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%; /* Ancho completo del contenedor */
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente para el texto */
+    color: white; /* Color del texto */
+    padding: 10px; /* Espaciado interno */
+    box-sizing: border-box; /* Incluir el relleno en el ancho */
+    text-align:center;
+    font-size: 18px;
+    font-weight: bold;
 }
 
-/* Estilo personalizado para los botones de control */
+.hi-slide li {
+    position: relative; /* Asegúrate de que el contenedor padre tenga una posición relativa */
+}
+
+.carousel-slide {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.carousel-slide .carousel-item {
+    position: relative;
+    width: 100%;
+}
+
+.carousel-slide .carousel-item .cargo {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.carousel-inner .carousel-item img {
+    border: 2px solid var(--text-color);
+    max-width: 100%;
+    height: auto;
+}
+
 .carousel-control-prev,
 .carousel-control-next {
-    width: 30px; /* Ancho de los botones */
-    height: 30px; /* Alto de los botones */
-    background-color: var(--azul); /* Fondo semitransparente */
-    border-radius: 50%; /* Borde redondeado */
+    width: 30px;
+    height: 30px;
+    background-color: var(--azul);
+    border-radius: 50%;
     border: 2px solid var(--text-color);
-    margin-top:60%;
+    margin-top: 60%;
 }
 
 .carousel-control-prev:hover,
 .carousel-control-next:hover {
-    opacity:1;
+    opacity: 1;
     background-color: #12d7e9;
 }
 
-.carousel-control-prev{
-    transform: translateX(-10px); /* Mover hacia la izquierda */
-    padding:5px;
+.carousel-control-prev {
+    transform: translateX(-10px);
+    padding: 5px;
 }
 
-.carousel-control-next{
-    transform: translateX(10px); /* Mover hacia la derecha */
-    padding:5px;
+.carousel-control-next {
+    transform: translateX(10px);
+    padding: 5px;
 }
 
 @media screen and (max-width:880px) {
@@ -681,16 +824,71 @@ body.dark {
 }
 }
 
+/* FIN NUESTRO EQUIPO */
 /* FOOTER */
 
-.footer{
-    background-color: var(--bg-cabecera);
-    min-height:150px;
-    width:100%;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    text-align: justify;
+.bolder{
+    font-weight: bold;
 }
+
+.footer{
+    margin-top: 100px;
+    background-color: var(--modo-oscuro-total);
+    color:var(--modo-claro-total);
+}
+
+.footer h5{
+    text-align: center;
+    padding-bottom: 20px;
+    font-weight: bold;
+    font-size:25px;
+    border-bottom: var(--modo-claro-total) 2px solid;
+    margin-bottom: 30px;
+}
+
+.footer p{
+    text-align: center;
+    font-size:19px;
+}
+
+.redes li {
+    display: inline-block;
+    margin-right: 10px; /* Espacio entre los iconos */
+}
+
+.redes li a i {
+    font-size: 24px; /* Tamaño de los iconos */
+    line-height: 50px; /* Altura del contenedor de la pelota */
+    width: 50px; /* Ancho del contenedor de la pelota */
+    height: 50px; /* Altura del contenedor de la pelota */
+    border-radius: 50%; /* Forma de una pelota */
+    border: var(--modo-claro-total) 1px solid;
+    text-align: center;
+    background-color: transparent; /* Color de fondo inicial */
+    color: var(--modo-claro-total); /* Color del icono inicial */
+    transition: all 0.3s ease; /* Transición suave */
+    padding:12px;
+}
+
+.redes li a i:hover {
+    background-color: var(--azul);
+}
+.redes li:hover {
+    transform:scale(1.1);
+    transition: ease 0.2s;
+}
+
+.derechos{
+    margin-top:40px;
+    margin-bottom: -45px;
+}
+
+@media screen and (max-width:767px) {
+    .siguenos{
+        margin-top:20px;
+    }
+ }
+
 
 /* FIN FOOTER */
 
