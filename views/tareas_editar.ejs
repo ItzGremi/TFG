@@ -74,7 +74,7 @@
         <input value="<%= tarea.id %>" id="id" name="id" hidden>
         <div>
             <label for="tarea">Escribe tu tarea:</label><br>
-            <textarea id="tarea" name="tarea" rows="4" cols="50" required><%= tarea.tarea %></textarea>
+            <textarea id="tarea" name="tarea" rows="4" cols="50" maxlength="300" required><%= tarea.tarea %></textarea>
         </div>
         <div>
             <button type="submit">Subir Tarea</button>

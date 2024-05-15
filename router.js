@@ -100,18 +100,20 @@ router.get('/tarea_eliminar/:id', (req, res)=>{
 })
 
 router.get('/noticias', (req, res)=>{
-    conexion.query('SELECT * FROM noticias ORDER BY fecha_publicacion DESC', (error, results)=>{
+    conexion.query('SELECT * FROM noticias ORDER BY id DESC', (error, results)=>{
         if(error){
             throw error;
         } else{
             res.render('noticias', {
                 resultados: results,
-                login: req.session.loggedin, // Pasar la variable login basada en si el usuario está autenticado o no
-                usuario: req.session.usuario // Pasar el nombre de usuario desde la sesión
+                login: req.session.loggedin,
+                usuario: req.session.usuario
             });
         }
     })
 })
+
+
 
 
 

@@ -74,7 +74,7 @@
         <input value="<%= noticia.id %>" id="id" name="id" hidden>
         <div>
             <label for="noticia">Escribe tu noticia:</label><br>
-            <textarea id="noticia" name="noticia" rows="4" cols="50" required><%= noticia.noticia %></textarea>
+            <textarea id="noticia" name="noticia" rows="4" cols="50" maxlength="300" required><%= noticia.noticia %></textarea>
         </div>
         <div>
             <button type="submit">Publicar Noticia</button>
