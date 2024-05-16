@@ -33,12 +33,14 @@ exports.editar_tarea = (req, res) => {
 exports.guardar_noticia = (req, res) => {
     const noticia = req.body.noticia;
     const usuario = req.session.usuario; // Obtener el nombre de usuario de la sesión actual
+    const imagenUrl = req.file ? '/' + req.file.filename : null; // Obtener la URL de la imagen
 
     //FECHA Y HORA ACTUAL
     const fechaHoraActual = new Date();
     const fecha_publicacion = formatearFechaHora(fechaHoraActual);
 
-    conexion.query('INSERT INTO noticias SET ?', { noticia: noticia, usuario: usuario, fecha_publicacion: fecha_publicacion }, (error, results) => {
+    // Insertar la noticia en la base de datos, incluyendo la URL de la imagen
+    conexion.query('INSERT INTO noticias SET ?', { noticia, usuario, fecha_publicacion, imagen: imagenUrl }, (error, results) => {
         if (error) {
             throw error;
         } else {
@@ -46,6 +48,9 @@ exports.guardar_noticia = (req, res) => {
         }
     });
 }
+
+
+
 
 exports.editar_noticia = (req, res) => {
     const noticia = req.body.noticia;

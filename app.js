@@ -19,6 +19,8 @@ app.set('view engine', 'ejs');
 // Servir archivos estáticos desde el directorio 'public'
 app.use(express.static(__dirname + '/public'));
 
+app.use(express.static(__dirname + '/uploads'));
+
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 

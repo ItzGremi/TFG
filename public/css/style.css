@@ -975,5 +975,12 @@ body.dark {
     margin-bottom: 10px;
 }
 
+/* Estilos para la imagen */
+.noticia img {
+    max-width: 100%; /* La imagen se ajusta al ancho del contenedor */
+    height: auto; /* Altura automática para mantener la relación de aspecto */
+}
+
 /* FIN NOTICIAS ---------------------------------------------------------------- */
+
 

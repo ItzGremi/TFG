@@ -1,6 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const conexion = require('./database/db');
+const multer = require('multer');
+
+// Configuración de multer
+const upload = multer({ dest: 'uploads/' });
 
 router.get('/', (req, res)=>{
     if(req.session.loggedin){
@@ -193,7 +197,7 @@ router.get('/cambiar-contra', (req, res)=>{
 
 
 const crud = require('./controllers/crud');
-router.post('/guardar_noticia', crud.guardar_noticia);
+router.post('/guardar_noticia', upload.single('imagen'), crud.guardar_noticia);
 router.post('/editar_noticia', crud.editar_noticia);
 router.post('/register', crud.registro);
 router.post('/auth', crud.iniciosesion);

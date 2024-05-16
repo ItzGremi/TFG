@@ -70,10 +70,11 @@
 
     <h1>Crear Noticia</h1>
 
-    <form action="/guardar_noticia" method="POST">
+    <form action="/guardar_noticia" method="POST" enctype="multipart/form-data">
         <div>
             <label for="noticia">Escribe tu noticia:</label><br>
             <textarea id="noticia" name="noticia" rows="4" cols="50" maxlength="300" required></textarea>
+            <input type="file" name="imagen">
         </div>
         <div>
             <!-- Mostrar el nombre del usuario -->
