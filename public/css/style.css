@@ -949,37 +949,84 @@ body.dark {
     align-items: center;
 }
 
+.noticia-imagen.isClose,
+.texto-noticia.isClose {
+    display: none;
+}
+
+
 .noticia {
+    position: relative; /* Agrega posición relativa */
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
+    justify-content: center; /* Centramos verticalmente los elementos */
+    align-items: center; /* Centramos horizontalmente los elementos */
     width: 600px;
     border: 1px solid #ccc;
     padding: 20px;
     margin-bottom: 20px;
     color: white !important; 
     background-color: black !important; 
+    border-radius: 10px;
 }
 
-.texto-noticia {
+.noticia:hover {
+    box-shadow: 0 0 10px var(--azul); /* Sombra azul con transparencia */
+    transition: box-shadow 0.3s ease; /* Transición suave */
+}
+
+.texto-noticia, .usuario-noticia {
+    align-self: flex-start; /* Alinea estos elementos a la izquierda */
+    text-align: left; /* Asegura que el texto esté alineado a la izquierda */
     margin-bottom: 10px;
     word-break: break-word; /* Permitir saltos de línea */
 }
 
 .usuario-noticia {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center; /* Alinea verticalmente al centro */
+    font-size: 20px;
+    font-weight: bold;
     margin-bottom: 10px;
 }
 
-.fecha-noticia {
-    margin-bottom: 10px;
+.nombre-usuario{
+    padding-top: 15px;
 }
 
-/* Estilos para la imagen */
+#perfil {
+    font-size: 30px;
+    margin-right: 10px;
+}
+
+
+.texto-noticia{
+    margin-top: 10px;
+    margin-left: 27px;
+}
+
+.fecha-noticia{
+    border-top: 1px solid #5a5353;
+    padding-top: 20px;
+    margin-bottom: -15px;
+    width: 100%;
+    text-align: center;
+}
+
 .noticia img {
-    max-width: 100%; /* La imagen se ajusta al ancho del contenedor */
-    height: auto; /* Altura automática para mantener la relación de aspecto */
+    text-align: center; /* Centra el texto y las imágenes */
+    margin-bottom: 10px;
+    width: auto;
+    max-width: 500px; /* La imagen se ajusta al ancho del contenedor */
+    max-height: 350px; /* Altura automática para mantener la relación de aspecto */
 }
+
+.modificar-noticia{
+    margin-top: 10px;
+}
+
 
 /* FIN NOTICIAS ---------------------------------------------------------------- */
 
