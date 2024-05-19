@@ -67,20 +67,23 @@
     </button>
 </header>
 
-    <h1>Editar Tarea</h1>
+<!-- Formulario de Editar Tarea -->
+<main class="container mt-5">
+    <h1 class="titulo-inicio">Editar Tarea</h1>
 
     <% if (tarea){ %>
-    <form action="/editar_tarea" method="POST">
+    <form action="/editar_tarea" method="POST" class="container">
         <input value="<%= tarea.id %>" id="id" name="id" hidden>
-        <div>
-            <label for="tarea">Escribe tu tarea:</label><br>
-            <textarea id="tarea" name="tarea" rows="4" cols="50" maxlength="300" required><%= tarea.tarea %></textarea>
+        <div class="mb-3">
+            <label for="tarea" class="form-label">Escribe tu tarea:</label>
+            <textarea id="tarea" name="tarea" rows="4" cols="50" maxlength="300" required class="form-control borde"><%= tarea.tarea %></textarea>
         </div>
-        <div>
-            <button type="submit">Subir Tarea</button>
-            <a href="/tareas">Cancelar</a>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary">Subir Tarea</button>
+            <a href="/tareas" class="btn btn-secondary">Cancelar</a>
         </div>
     </form>
-    <% }; %>
+    <% } %>
+</main>
 </body>
 </html>

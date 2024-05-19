@@ -15,6 +15,7 @@
     
     <!-- Script a mano -->
     <script defer src="/css/js/script.js"></script>
+    <script defer src="/css/js/fichar.js"></script>
 </head>
 <body>
 
@@ -69,42 +70,47 @@
 
 <!-- Fichaje -->
 <main>
-    <h1>Fichar</h1>
-    <form action="/iniciar_fichaje" method="post" id="formulario-iniciar-fichaje">
-        <div class="contenedor-fichaje">
-            <button type="submit" id="btn-fichar">Iniciar Fichaje</button>
-        </div>
-    </form>
+    <h1 class="titulo-inicio">FICHAR</h1>
 
-    <form action="/terminar_fichaje" method="post" id="formulario-terminar-fichaje">
-        <div class="contenedor-fichaje">
-            <button type="submit" id="btn-fichar">Terminar Fichaje</button>
-        </div>
-    </form>
+    <div class="caja-fichaje">
+        <form action="/iniciar_fichaje" method="post" id="formulario-iniciar-fichaje">
+            <div class="contenedor-fichaje">
+                <button type="submit" id="btn-fichar-i">Iniciar Jornada</button>
+            </div>
+        </form>
+    
+        <form action="/terminar_fichaje" method="post" id="formulario-terminar-fichaje">
+            <div class="contenedor-fichaje">
+                <button type="submit" id="btn-fichar-t">Terminar Jornada</button>
+            </div>
+        </form>
+    </div>
 
-    <h2>Últimos 10 fichajes realizados</h2>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Fecha de Entrada</th>
-                <th>Fecha de Salida</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% if (fichajes && fichajes.length > 0) { %>
-                <% fichajes.forEach((fichaje) => { %>
-                    <tr>
-                        <td><%= fichaje.hora_entrada %></td>
-                        <td><%= fichaje.hora_salida %></td>
-                    </tr>
-                <% }); %>
-            <% } else { %>
+    <h2 class="titulo-sec">Últimos 10 fichajes realizados</h2>
+    <div class="contenedor-tabla">
+        <table class="table diezFichajes">
+            <thead>
                 <tr>
-                    <td colspan="2">No hay fichajes registrados aún.</td>
+                    <th>Fecha de Entrada</th>
+                    <th>Fecha de Salida</th>
                 </tr>
-            <% } %>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <% if (fichajes && fichajes.length > 0) { %>
+                    <% fichajes.forEach((fichaje) => { %>
+                        <tr>
+                            <td><%= fichaje.hora_entrada %></td>
+                            <td><%= fichaje.hora_salida %></td>
+                        </tr>
+                    <% }); %>
+                <% } else { %>
+                    <tr>
+                        <td colspan="2">No hay fichajes registrados aún.</td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
 </main>
 
 <footer class="footer py-5">

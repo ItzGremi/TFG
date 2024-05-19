@@ -68,17 +68,20 @@
 </header>
     
 
-    <h1>Crear Tarea</h1>
+<main class="container mt-5">
+    <h1 class="titulo-inicio">CREAR TAREA</h1>
 
-    <form action="/guardar_tarea" method="POST">
-        <div>
-            <label for="tarea">Escribe tu tarea:</label><br>
-            <textarea id="tarea" name="tarea" rows="4" cols="50" maxlength="300" required></textarea>
+    <form action="/guardar_tarea" method="POST" class="container">
+        <div class="mb-3">
+            <label for="tarea" class="form-label">Escribe tu tarea:</label>
+            <textarea id="tarea" name="tarea" rows="4" cols="50" maxlength="300" required class="form-control borde"></textarea>
         </div>
-        <div>
-            <button type="submit">Subir Tarea</button>
-            <a href="/tareas">Cancelar</a>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary">Subir Tarea</button>
+            <a href="/tareas" class="btn btn-secondary">Cancelar</a>
         </div>
     </form>
+</main>
+
 </body>
 </html>

@@ -198,7 +198,7 @@ router.get('/cambiar-contra', (req, res)=>{
 
 const crud = require('./controllers/crud');
 router.post('/guardar_noticia', upload.single('imagen'), crud.guardar_noticia);
-router.post('/editar_noticia', crud.editar_noticia);
+router.post('/editar_noticia', upload.single('imagen'), crud.editar_noticia);
 router.post('/register', crud.registro);
 router.post('/auth', crud.iniciosesion);
 router.post('/iniciar_fichaje', crud.iniciar_fichaje);

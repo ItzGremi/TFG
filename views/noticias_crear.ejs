@@ -68,21 +68,20 @@
 </header>
     
 
-    <h1>Crear Noticia</h1>
+<h1 class="titulo-inicio">CREAR NOTICIA</h1>
 
-    <form action="/guardar_noticia" method="POST" enctype="multipart/form-data">
-        <div>
-            <label for="noticia">Escribe tu noticia:</label><br>
-            <textarea id="noticia" name="noticia" rows="4" cols="50" maxlength="300" required></textarea>
-            <input type="file" name="imagen">
-        </div>
-        <div>
-            <!-- Mostrar el nombre del usuario -->
-            <p>Usuario: <%= usuario %></p>
-
-            <button type="submit">Publicar Noticia</button>
-            <a href="/noticias">Cancelar</a>
-        </div>
-    </form>
+<form action="/guardar_noticia" method="POST" enctype="multipart/form-data" class="container">
+    <div class="mb-3">
+        <label for="noticia" class="form-label">Escribe tu noticia:</label>
+        <textarea id="noticia" name="noticia" rows="4" cols="50" maxlength="300" required class="form-control borde"></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="imagen" class="form-label">Adjuntar imagen:</label>
+        <input type="file" name="imagen" id="imagen" class="form-control borde">
+    </div>
+    <p>Usuario: <%= usuario %></p>
+    <button type="submit" class="btn btn-primary">Publicar Noticia</button>
+    <a href="/noticias" class="btn btn-secondary">Cancelar</a>
+</form>
 </body>
 </html>

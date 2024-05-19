@@ -68,7 +68,16 @@ exports.editar_noticia = (req, res) => {
                 const fechaHoraActual = new Date();
                 const fecha_publicacion = formatearFechaHora(fechaHoraActual);
 
-                conexion.query('UPDATE noticias SET ? WHERE id=?', [{ noticia: noticia, fecha_publicacion: `Editado a las ${fecha_publicacion}` }, id], (error, results) => {
+                let updateData = { noticia: noticia, fecha_publicacion: `Editado a las ${fecha_publicacion}` };
+
+                // Verificar si se ha proporcionado una nueva imagen
+                if (req.file) {
+                    const imagenUrl = '/' + req.file.filename; // Obtener la URL de la nueva imagen
+                    updateData.imagen = imagenUrl; // Agregar la URL de la nueva imagen a los datos de actualización
+                }
+
+                // Actualizar la noticia en la base de datos
+                conexion.query('UPDATE noticias SET ? WHERE id=?', [updateData, id], (error, results) => {
                     if (error) {
                         throw error;
                     } else {
@@ -81,6 +90,7 @@ exports.editar_noticia = (req, res) => {
         }
     });
 }
+
 
 // Función para formatear la fecha y la hora
 function formatearFechaHora(fechaHora) {

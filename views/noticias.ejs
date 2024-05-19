@@ -16,6 +16,7 @@
     
     <!-- Script a mano -->
     <script defer src="/css/js/script.js"></script>
+    <script defer src="/css/js/noticias.js"></script>
 </head>
 <body>
 
@@ -70,21 +71,21 @@
     
 
     
-    <!-- Noticias -->
+<!-- Noticias -->
 <main>
 
     <h1 class="titulo-inicio" id="hola">NOTICIAS</h1>
 
-    <div class="container-fluid">
-        <a href="/noticias_crear" class="btn btn-outline-primary mt-4 btn-lg">SUBIR NOTICIA <i class="bi bi-plus-circle"></i></a>
-    </div>
-    
     <div class="contenedor-noticias">
+        <a href="/noticias_crear" class="btn btn-outline-primary mt-4 btn-lg subir-noticia">SUBIR NOTICIA <i class="bi bi-plus-circle"></i></a>
         <% resultados.forEach((noticia)=> { %>
             <div class="noticia">
-                <div class="usuario-noticia">
-                    <i class="bi bi-person-square" id="perfil"></i>
-                    <p class="nombre-usuario"><%= noticia.usuario %></p>
+                <div class="flecha">
+                    <div class="usuario-noticia">
+                        <i class="bi bi-person-square" id="perfil"></i>
+                        <p class="nombre-usuario"><%= noticia.usuario %></p>
+                    </div>
+                    <a href="#" class="btn btn-outline-primary toggle-noticia"><i class="bi bi-caret-up-fill"></i></a>
                 </div>
                 <% if (noticia.imagen) { %>
                     <img src="<%= noticia.imagen %>" class="imagen-noticia" alt="Imagen de la noticia">
@@ -95,12 +96,12 @@
                 <div class="fecha-noticia">
                     <p><%= noticia.fecha_publicacion %></p>
                 </div>
-                <% if (noticia.usuario === usuario) { %>
                 <div class="modificar-noticia">
+                    <% if (noticia.usuario === usuario) { %>
                         <a href="/noticia_editar/<%= noticia.id %>" class="btn btn-outline-info"><i class="bi bi-pencil-square"></i></a>
                         <a href="/noticia_eliminar/<%= noticia.id %>" class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></a>
+                    <% } %>
                 </div>
-                <% } %>
             </div>
         <% }); %>
     </div>
