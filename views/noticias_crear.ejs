@@ -67,19 +67,21 @@
     </button>
 </header>
     
+<div class="caja-centrada">
+    <h1 class="titulo-crear">CREAR NOTICIA</h1>
+</div>
 
-<h1 class="titulo-inicio">CREAR NOTICIA</h1>
 
 <form action="/guardar_noticia" method="POST" enctype="multipart/form-data" class="container">
     <div class="mb-3">
-        <label for="noticia" class="form-label">Escribe tu noticia:</label>
-        <textarea id="noticia" name="noticia" rows="4" cols="50" maxlength="300" required class="form-control borde"></textarea>
+        <label for="noticia" class="form-label texto-general"><i class="bi bi-chat-square-dots"></i>Escribe tu noticia:</label>
+        <textarea id="noticia" name="noticia" rows="4" cols="50" maxlength="300" required class="form-control borde input-info"></textarea>
     </div>
     <div class="mb-3">
-        <label for="imagen" class="form-label">Adjuntar imagen:</label>
+        <label for="imagen" class="form-label texto-general"><i class="bi bi-card-image"></i>Adjuntar imagen:</label>
         <input type="file" name="imagen" id="imagen" class="form-control borde">
     </div>
-    <p>Usuario: <%= usuario %></p>
+    <p class="texto-general"><i class="bi bi-person-circle"></i>Usuario: <%= usuario %></p>
     <button type="submit" class="btn btn-primary">Publicar Noticia</button>
     <a href="/noticias" class="btn btn-secondary">Cancelar</a>
 </form>

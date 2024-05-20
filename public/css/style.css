@@ -10,6 +10,8 @@
     --transition:color 0.1s, background-color 0.2s ease-in-out;
     --tarjeta-fondo: hsl(0, 1%, 19%);
     --tarjeta-texto: hsl(0,0%,90%);
+    --titulo-crear: hsl(0,0%,90%);
+    --titulo-crear-fondo: hsl(0, 1%, 19%);
 }
 
 * {
@@ -36,6 +38,8 @@ body.dark {
     --bg-color: hsl(0, 1%, 19%);
     --bg-cabecera: hsl(0, 0%, 6%);
     --tarjeta-fondo: hsl(0, 0%, 6%);
+    --titulo-crear: hsl(0, 1%, 19%);
+    --titulo-crear-fondo: hsl(0,0%,90%);
 
 }
 
@@ -1293,7 +1297,44 @@ body.dark {
 
 /* CREAR Y EDITAR NOTICIAS Y TAREAS --------------------------------------------- */
 
+.texto-general{
+    font-size: 16px;
+}
 
+.texto-general i{
+    font-size: 16px;
+    margin-right: 5px;
+}
+
+.titulo-crear{
+    text-align:center;
+    font-weight: bold;
+    font-size:3em;
+    color: var(--titulo-crear);
+    background-color: var(--titulo-crear-fondo);
+    width:85%;
+    margin: 80px 0 20px 0;
+    border: 1px black solid;
+    border-radius: 30px;
+}
+
+.caja-centrada{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.caja-centrada-fila{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.btn-tarea{
+    margin-right: 15px;
+}
 
 /* FIN CREAR Y EDITAR NOTICIAS Y TAREAS ----------------------------------------- */
 

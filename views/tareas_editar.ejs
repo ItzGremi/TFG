@@ -69,18 +69,23 @@
 
 <!-- Formulario de Editar Tarea -->
 <main class="container mt-5">
-    <h1 class="titulo-inicio">Editar Tarea</h1>
+    <div class="caja-centrada">
+        <h1 class="titulo-crear">Editar Tarea</h1>
+    </div>
+    
 
     <% if (tarea){ %>
     <form action="/editar_tarea" method="POST" class="container">
         <input value="<%= tarea.id %>" id="id" name="id" hidden>
         <div class="mb-3">
-            <label for="tarea" class="form-label">Escribe tu tarea:</label>
+            <label for="tarea" class="form-label texto-general"><i class="bi bi-chat-square-dots"></i>Escribe tu tarea:</label>
             <textarea id="tarea" name="tarea" rows="4" cols="50" maxlength="300" required class="form-control borde"><%= tarea.tarea %></textarea>
         </div>
         <div class="mb-3">
-            <button type="submit" class="btn btn-primary">Subir Tarea</button>
-            <a href="/tareas" class="btn btn-secondary">Cancelar</a>
+            <div class="caja-centrada-fila">
+                <button type="submit" class="btn btn-primary btn-tarea">Subir Tarea</button>
+                <a href="/tareas" class="btn btn-secondary">Cancelar</a>
+            </div>
         </div>
     </form>
     <% } %>

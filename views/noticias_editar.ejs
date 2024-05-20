@@ -67,23 +67,29 @@
     </button>
 </header>
 
-    <h1 class="titulo-inicio">Editar Noticia</h1>
-
+<div class="caja-centrada">
+    <h1 class="titulo-crear">Editar Noticia</h1>
+</div>
+    
     <% if (noticia){ %>
     <form action="/editar_noticia" method="POST" class="container" enctype="multipart/form-data">
         <input value="<%= noticia.id %>" id="id" name="id" hidden>
         <div class="mb-3">
-            <label for="noticia" class="form-label">Escribe tu noticia:</label>
-            <textarea id="noticia" name="noticia" rows="4" cols="50" maxlength="300" required class="form-control borde"><%= noticia.noticia %></textarea>
+            <label for="noticia" class="form-label texto-general"><i class="bi bi-chat-square-dots"></i>Escribe tu noticia:</label>
+            <textarea id="noticia" name="noticia" rows="4" cols="50" maxlength="300" required class="form-control borde input-info"><%= noticia.noticia %></textarea>
         </div>
         <div class="mb-3">
-            <label for="imagen" class="form-label">Adjuntar imagen:</label>
+            <label for="imagen" class="form-label texto-general"><i class="bi bi-card-image"></i>Adjuntar imagen:</label>
             <input type="file" value="<%= noticia.imagen %>" name="imagen" id="imagen" class="form-control borde">
         </div>
-        <div>
-            <button type="submit" class="btn btn-primary">Publicar Noticia</button>
-            <a href="/noticias" class="btn btn-secondary">Cancelar</a>
+        <div class="caja-centrada">
+            <p class="texto-general"><i class="bi bi-person-circle"></i>Usuario: <%= usuario %></p>
+            <div>
+                <button type="submit" class="btn btn-primary">Publicar Noticia</button>
+                <a href="/noticias" class="btn btn-secondary">Cancelar</a>
+            </div>
         </div>
+        
     </form>
     <% }; %>
 </body>
