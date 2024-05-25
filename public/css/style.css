@@ -1312,7 +1312,7 @@ body.dark {
     font-size:3em;
     color: var(--titulo-crear);
     background-color: var(--titulo-crear-fondo);
-    width:85%;
+    width:65%;
     margin: 80px 0 20px 0;
     border: 1px black solid;
     border-radius: 30px;
