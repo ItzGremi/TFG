@@ -95,6 +95,22 @@ body{
     text-decoration:underline;
 }
 
+.casa{
+    border-radius: 50%;
+    color:black;
+    background-color: white;
+    padding:5px;
+    font-size: 18px;
+    transform:translateY(10px);
+}
+
+.casa:hover{
+    color:white;
+    background-color: transparent;
+    transition: 0.2s;
+    box-shadow:0 0 10px rgb(14, 14, 14);
+}
+
 #ojo{
     cursor: pointer;
 }
