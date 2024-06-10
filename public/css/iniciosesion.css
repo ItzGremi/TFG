@@ -1,3 +1,4 @@
+/* ESTILOS GLOBALES */
 *{
     margin:0;
     padding:0;
@@ -5,6 +6,7 @@
     font-family:'Times New Roman', Times, serif;
 }
 
+/* CUERPO DE LA PÁGINA */
 body{
     display: flex;
     justify-content: center;
@@ -16,6 +18,7 @@ body{
     background-position:center;
 }
 
+/* ESTILOS FORMULARIO */
 .wrapper{
     width:420px;
     background:transparent;
@@ -95,6 +98,7 @@ body{
     text-decoration:underline;
 }
 
+/* BOTÓN PARA VOLVER A PÁGINA DE INICIO */
 .casa{
     border-radius: 50%;
     color:black;
@@ -111,6 +115,7 @@ body{
     box-shadow:0 0 10px rgb(14, 14, 14);
 }
 
+/* OJOS DE CONTRASEÑA */
 #ojo{
     cursor: pointer;
 }

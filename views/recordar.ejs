@@ -3,12 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Título -->
     <title>JoClock - Recordar Contraseña</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/css/icons/JOCLOCK_ISOTIPO.svg" type="image/x-icon">
+    <!-- BoxIcons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Estilo propio -->
     <link rel="stylesheet" href="/css/iniciosesion.css">
 </head>
 <body>
-    
+    <!-- Formulario -->
     <div class="wrapper">
         <form action="/enviar-correo" method="POST">
             <h1>Restablecer Contraseña</h1>
@@ -25,7 +30,7 @@
             </div>
         </form>
     </div>
-
+    <!-- SweetAlert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <% if(typeof alert != "undefined") { %>
         <script>

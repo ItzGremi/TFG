@@ -1,3 +1,4 @@
+/* Importación de utilidades */
 const express = require('express');
 const app = express();
 const session = require('express-session');
@@ -19,14 +20,17 @@ app.set('view engine', 'ejs');
 // Servir archivos estáticos desde el directorio 'public'
 app.use(express.static(__dirname + '/public'));
 
+// Servir archivos estáticos desde el directorio 'uploads'
 app.use(express.static(__dirname + '/uploads'));
 
+/* Configuraciones JSON */
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 
 // Importamos y usamos el enrutador
 app.use('/', require('./router'));
 
+/* Usamos DotEnv */
 const dotenv = require('dotenv');
 dotenv.config({path:'./env/.env'});
 

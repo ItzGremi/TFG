@@ -1,3 +1,4 @@
+/* Importación de utilidades necesarias */
 const express = require('express');
 const router = express.Router();
 const conexion = require('./database/db');
@@ -6,6 +7,7 @@ const multer = require('multer');
 // Configuración de multer
 const upload = multer({ dest: 'uploads/' });
 
+/* Página de inicio */
 router.get('/', (req, res)=>{
     if(req.session.loggedin){
         res.render('inicio', {
@@ -20,13 +22,14 @@ router.get('/', (req, res)=>{
     }
 });
 
-
+/* Cerrar sesión */
 router.get('/cerrarsesion', (req, res)=>{
     req.session.destroy(()=>{
         res.redirect('/');
     })
 })
 
+/* Fichar */
 router.get('/fichar', (req, res) => {
     const usuario = req.session.usuario;
     if (req.session.loggedin) {
@@ -46,6 +49,7 @@ router.get('/fichar', (req, res) => {
     }
 });
 
+/* Tareas */
 router.get('/tareas', (req, res) => {
     const usuario = req.session.usuario;
     if (req.session.loggedin) {
@@ -65,7 +69,7 @@ router.get('/tareas', (req, res) => {
     }
 });
 
-
+/* Crear Tarea */
 router.get('/tareas_crear', (req, res)=>{
     if(req.session.loggedin){
         res.render('tareas_crear', {
@@ -77,6 +81,7 @@ router.get('/tareas_crear', (req, res)=>{
     }
 })
 
+/* Editar Tarea */
 router.get('/tarea_editar/:id', (req, res)=>{
     const id = req.params.id;
     conexion.query('SELECT * FROM tareas WHERE id=?', [id], (error, results)=>{
@@ -92,6 +97,7 @@ router.get('/tarea_editar/:id', (req, res)=>{
     })
 })
 
+/* Eliminar Tarea */
 router.get('/tarea_eliminar/:id', (req, res)=>{
     const id = req.params.id;
     conexion.query('DELETE FROM tareas WHERE id=?', [id], (error, results)=>{
@@ -103,6 +109,7 @@ router.get('/tarea_eliminar/:id', (req, res)=>{
     });  
 })
 
+/* Noticias */
 router.get('/noticias', (req, res)=>{
     conexion.query('SELECT * FROM noticias ORDER BY id DESC', (error, results)=>{
         if(error){
@@ -117,10 +124,7 @@ router.get('/noticias', (req, res)=>{
     })
 })
 
-
-
-
-
+/* Crear Noticia */
 router.get('/noticias_crear', (req, res)=>{
     if(req.session.loggedin){
         res.render('noticias_crear', {
@@ -132,7 +136,7 @@ router.get('/noticias_crear', (req, res)=>{
     }
 })
 
-
+/* Editar Noticia */
 router.get('/noticia_editar/:id', (req, res)=>{
     const id = req.params.id;
     conexion.query('SELECT * FROM noticias WHERE id=?', [id], (error, results)=>{
@@ -148,6 +152,7 @@ router.get('/noticia_editar/:id', (req, res)=>{
     })
 })
 
+/* Eliminar Noticia */
 router.get('/noticia_eliminar/:id', (req, res)=>{
     const id = req.params.id;
     const usuario = req.session.usuario; // Obtener el nombre de usuario de la sesión actual
@@ -173,29 +178,32 @@ router.get('/noticia_eliminar/:id', (req, res)=>{
     });
 })
 
-
-
+/* Iniciar Sesión */
 router.get('/iniciosesion', (req, res)=>{
     res.render('iniciosesion');
 })
 
+/* Registro */
 router.get('/registro', (req, res)=>{
     res.render('registro');
 })
 
+/* Recordar Contraseña */
 router.get('/recordar', (req, res)=>{
     res.render('recordar');
 })
 
+/* Código */
 router.get('/codigo', (req, res)=>{
     res.render('codigo');
 })
 
+/* Cambiar Contraseña */
 router.get('/cambiar-contra', (req, res)=>{
     res.render('cambiar-contra');
 })
 
-
+/* Operaciones POST con el CRUD */
 const crud = require('./controllers/crud');
 router.post('/guardar_noticia', upload.single('imagen'), crud.guardar_noticia);
 router.post('/editar_noticia', upload.single('imagen'), crud.editar_noticia);
@@ -209,5 +217,5 @@ router.post('/enviar-correo', crud.enviarCorreo);
 router.post('/comprobar-codigo', crud.comprobarCodigoRecuperacion);
 router.post('/cambiar-contra', crud.cambiarContraseña);
 
-
+/* Exportación del Router */
 module.exports = router;

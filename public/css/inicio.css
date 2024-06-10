@@ -57,9 +57,9 @@ body.dark {
     background-color: var(--modo-oscuro-total) !important;
     color: var(--modo-claro-total);
     width: 100%;
-    position: sticky; /* Hace que la cabecera sea pegajosa */
-    top: 0; /* La fija en la parte superior de la ventana */
-    z-index: 999; /* Asegura que esté por encima de otros elementos */
+    position: sticky; 
+    top: 0; 
+    z-index: 999; 
 }
 
 .cabecera a {
@@ -198,7 +198,7 @@ body.dark {
         position: absolute;
         padding-top: 10px;
         padding-bottom: 10px;
-        animation: deslizarAbajo 0.5s ease; /* Aplicar la animación */
+        animation: deslizarAbajo 0.5s ease; 
     }
 
     .opciones-navegacion.mostrar {
@@ -223,6 +223,8 @@ body.dark {
         width: 100%;
     }
 }
+
+/* RESPONSIVE */
 
 @media screen and (max-width: 650px) {
     .logo {
@@ -425,6 +427,8 @@ body.dark {
     font-size:20px;
 }
 
+/* RESPONSIVE */
+
 @media screen and (max-width: 1200px) {
     #inicio .cont-info {
         padding-left: 90px;
@@ -625,6 +629,8 @@ body.dark {
 #clientes .tarjetas-destacadas .info-destacadas h3{
     font-weight: bold;
 }
+
+/* RESPONSIVE */
 
 @media screen and (max-width:1399px){
     #clientes .titulo-inicio::after{
@@ -854,20 +860,20 @@ body.dark {
 
 .redes li {
     display: inline-block;
-    margin-right: 10px; /* Espacio entre los iconos */
+    margin-right: 10px;  
 }
 
 .redes li a i {
-    font-size: 24px; /* Tamaño de los iconos */
-    line-height: 50px; /* Altura del contenedor de la pelota */
-    width: 50px; /* Ancho del contenedor de la pelota */
-    height: 50px; /* Altura del contenedor de la pelota */
-    border-radius: 50%; /* Forma de una pelota */
+    font-size: 24px;  
+    line-height: 50px;  
+    width: 50px;  
+    height: 50px;  
+    border-radius: 50%;  
     border: var(--modo-claro-total) 1px solid;
     text-align: center;
-    background-color: transparent; /* Color de fondo inicial */
-    color: var(--modo-claro-total); /* Color del icono inicial */
-    transition: all 0.3s ease; /* Transición suave */
+    background-color: transparent;  
+    color: var(--modo-claro-total);  
+    transition: all 0.3s ease; 
     padding:12px;
 }
 
@@ -889,7 +895,6 @@ body.dark {
         margin-top:20px;
     }
  }
-
 
 /* FIN FOOTER */
 

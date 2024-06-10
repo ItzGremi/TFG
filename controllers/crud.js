@@ -1,10 +1,13 @@
+/* Agregamos utilidades necesarias */
 const conexion = require('../database/db');
 const nodemailer = require('nodemailer');
 const bcryptjs = require('bcryptjs');
 
+/* TAREAS --------------------------------------------------------------------------------------------*/
+
 exports.guardar_tarea = (req, res) => {
     const tarea = req.body.tarea;
-    const usuario = req.session.usuario; // Obtener el nombre de usuario de la sesión
+    const usuario = req.session.usuario; 
 
     conexion.query('INSERT INTO tareas SET ?', { tarea: tarea, usuario: usuario }, (error, results) => {
         if (error) {
@@ -14,7 +17,6 @@ exports.guardar_tarea = (req, res) => {
         }
     });
 }
-
 
 exports.editar_tarea = (req, res) => {
     const tarea = req.body.tarea;
@@ -29,6 +31,9 @@ exports.editar_tarea = (req, res) => {
     });
 }
 
+/* FIN TAREAS ---------------------------------------------------------------------------------------*/
+
+/* NOTICIAS ------------------------------------------------------------------------------------------*/
 
 exports.guardar_noticia = (req, res) => {
     const noticia = req.body.noticia;
@@ -48,9 +53,6 @@ exports.guardar_noticia = (req, res) => {
         }
     });
 }
-
-
-
 
 exports.editar_noticia = (req, res) => {
     const noticia = req.body.noticia;
@@ -91,6 +93,7 @@ exports.editar_noticia = (req, res) => {
     });
 }
 
+/* FIN NOTICIAS -------------------------------------------------------------------------------------*/
 
 // Función para formatear la fecha y la hora
 function formatearFechaHora(fechaHora) {
@@ -105,6 +108,7 @@ function formatearFechaHora(fechaHora) {
     return `${diaExacto}/${mesExacto}/${añoExacto} - ${horaExacta}:${minutosExactos}:${segundosExactos}`;
 }
 
+/* REGISTRO ---------------------------------------------------------------------------------------------*/
 
 exports.registro = async (req, res) => {
     const bcryptjs = require('bcryptjs');
@@ -147,7 +151,9 @@ exports.registro = async (req, res) => {
     });
 }
 
+/* FIN REGISTRO -----------------------------------------------------------------------------------------*/
 
+/* INICIO DE SESIÓN ----------------------------------------------------------------------------------- */
 
 exports.iniciosesion = async (req, res) => {
     const bcryptjs = require('bcryptjs');
@@ -192,8 +198,10 @@ exports.iniciosesion = async (req, res) => {
     }
 }
 
+/* FIN INICIO DE SESIÓN ----------------------------------------------------------------------------- */
 
-// Iniciar fichaje
+/* FICHAR ---------------------------------------------------------------------------------------------*/
+
 exports.iniciar_fichaje = (req, res) => {
     if (!req.session.horaInicioFichaje) { // Verificar si el fichaje ya está iniciado
         req.session.horaInicioFichaje = formatearFechaHora(new Date()); // Guardar la hora de inicio del fichaje en la sesión
@@ -223,6 +231,10 @@ exports.terminar_fichaje = (req, res) => {
     }
 }
 
+/* FIN FICHAR ---------------------------------------------------------------------------------------------*/
+
+/* GENERAR CÓDIGO ALEATORIO */
+
 function generarCodigo() {
     const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     let codigo = '';
@@ -232,7 +244,7 @@ function generarCodigo() {
     return codigo;
 }
 
-// Configuración nodemailer
+// CONFIGURACIÓN NODEMAILER
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     port:587,

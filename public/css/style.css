@@ -61,9 +61,9 @@ body.dark {
     background-color: var(--modo-oscuro-total) !important;
     color: var(--modo-claro-total);
     width: 100%;
-    position: sticky; /* Hace que la cabecera sea pegajosa */
-    top: 0; /* La fija en la parte superior de la ventana */
-    z-index: 999; /* Asegura que esté por encima de otros elementos */
+    position: sticky; 
+    top: 0; 
+    z-index: 999; 
 }
 
 .cabecera a {
@@ -193,6 +193,8 @@ body.dark {
     border: none;
     color: var(--modo-claro-total);
 }
+
+/* RESPONSIVE */
 
 @media screen and (max-width: 1180px) {
     .opciones-navegacion {
@@ -429,6 +431,8 @@ body.dark {
     font-size:20px;
 }
 
+/* RESPONSIVE */
+
 @media screen and (max-width: 1200px) {
     #inicio .cont-info {
         padding-left: 90px;
@@ -630,6 +634,8 @@ body.dark {
     font-weight: bold;
 }
 
+/* RESPONSIVE */
+
 @media screen and (max-width:1399px){
     #clientes .titulo-inicio::after{
         width:57%;
@@ -749,10 +755,10 @@ body.dark {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 100%; /* Ancho completo del contenedor */
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente para el texto */
-    color: white; /* Color del texto */
-    padding: 10px; /* Espaciado interno */
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    color: white; 
+    padding: 10px; 
     box-sizing: border-box; /* Incluir el relleno en el ancho */
     text-align:center;
     font-size: 18px;
@@ -1074,6 +1080,8 @@ body.dark {
     margin-left: -800px;
 }
 
+/* RESPONSIVE */
+
 @media (max-width: 1020px) {
     .tarea {
         width: 600px;
@@ -1229,6 +1237,8 @@ body.dark {
 .flecha a{
     max-height:40px;
 }
+
+/* RESPONSIVE */
 
 @media (max-width: 1020px) {
     .noticia {
